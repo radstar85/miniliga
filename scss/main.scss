@@ -1,0 +1,627 @@
+@import "./colors";
+@import "./animate";
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62, 5%;
+	scroll-behavior: smooth;
+	scroll-padding-top: 82px;
+}
+
+body {
+	position: relative;
+	font-family: "Montserrat", sans-serif;
+	font-size: 1rem;
+	color: $white;
+	background-color: $bg-color;
+}
+
+.burger-btn {
+	position: fixed;
+	top: 15px;
+	right: 25px;
+	padding: 1em;
+	background: none;
+	border: 1px solid transparent;
+	cursor: pointer;
+	z-index: 1000;
+
+	&:focus {
+		outline: none;
+		border: 1px solid transparent;
+		border-radius: 8px;
+	}
+
+	&:hover {
+		.burger-btn__bars::after,
+		.burger-btn__bars::before {
+			width: 100%;
+		}
+	}
+
+	&__box {
+		position: relative;
+		width: 40px;
+		height: 30px;
+	}
+
+	&__bars,
+	&__bars::after,
+	&__bars::before {
+		position: absolute;
+		right: 0;
+		height: 3px;
+		content: "";
+		background-color: $white;
+		transition: width 0.5s;
+	}
+
+	&__bars {
+		width: 100%;
+
+		&::after {
+			top: 13px;
+			width: 60%;
+		}
+
+		&::before {
+			top: 27px;
+			width: 30%;
+			transition-delay: 0.3s;
+		}
+	}
+}
+
+.navbar {
+	display: none;
+}
+.minilogo2 {
+	width: 0;
+	height: 0;
+}
+
+.nav {
+	position: fixed;
+	top: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100vh;
+	transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+	transform: translateX(200%);
+	background-color: $redDamask;
+	z-index: 100;
+
+	&--active {
+		transform: translateX(0);
+	}
+
+	&__item {
+		position: relative;
+		display: block;
+		text-decoration: none;
+		padding: 0.5rem 2.5rem;
+		margin: 3rem 0rem;
+		color: $white;
+		font-size: 3rem;
+
+		&::before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			content: "";
+			background-color: $white;
+			height: 100%;
+			width: 3px;
+			transform: scaleY(0);
+			transition: transform 0.3s;
+		}
+
+		&:hover::before {
+			transform: scaleY(1);
+		}
+	}
+}
+
+@keyframes NavItemsANimation {
+	from {
+		transform: translateX(200%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+.nav-item-animation {
+	animation: navItemsANimation 1s both;
+}
+
+.black-bars-color,
+.black-bars-color::after,
+.black-bars-color::before {
+	background-color: $white;
+}
+
+/* header */
+
+.header {
+	position: relative;
+	height: 100vh;
+	background-image: url("../img/ball-gb8ded55ef_1920.jpg");
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+	z-index: 0;
+	
+
+	&-text {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		height: 100%;
+		width: 100%;
+
+		h1 {
+			font-size: 2rem;
+			margin-bottom: 0;
+		}
+
+		span {
+			color: $redDamask;
+		}
+
+		p {
+			font-size: 1.5rem;
+		}
+
+		.slice {
+			margin-top: 1rem;
+			padding: 0.8rem 1rem;
+			text-transform: uppercase;
+			border: 1px solid $white;
+			border-radius: 8px;
+			cursor: pointer;
+			position: relative;
+			background: none;
+			color: $white;
+			/* font-weight: bold; */
+			overflow: hidden;
+			font-size: 1rem;
+
+			&::before {
+				top: 0;
+				left: 0px;
+				height: 50%;
+				width: 0%;
+				background-color: $redDamask;
+				position: absolute;
+				transition: 0.3s;
+				content: "";
+				z-index: -1;
+			}
+			&:hover::before {
+				width: 100%;
+			}
+
+			&::after {
+				bottom: 0;
+				right: 0px;
+				height: 50%;
+				width: 0%;
+				background-color: $redDamask;
+				position: absolute;
+				transition: 0.3s;
+				content: "";
+				z-index: -1;
+			}
+
+			&:hover::after {
+				width: 100%;
+			}
+		}
+	}
+
+	&-shadow {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.8);
+		z-index: -10;
+	}
+
+	.minilogo {
+		position: relative;
+		width: 100px;
+		height: 100px;
+		left: 30px;
+		top: 30px;
+	}
+
+	.fa-chevron-down {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		bottom: 20px;
+		color: $white;
+	}
+}
+
+/* main */
+.aboutus {
+	color: black;
+
+	h2 {
+		color: $black;
+		text-align: center;
+		margin-top: 2rem;
+		text-transform: uppercase;
+		font-size: 1.5rem;
+	}
+
+	.aboutus__box {
+		justify-content: center;
+		text-align: center;
+
+		i {
+			font-size: 2rem;
+			color: $white;
+			text-shadow: 0px 0px 5px $black;
+			margin-bottom: 1rem;
+		}
+
+		.aboutus__title {
+			text-transform: uppercase;
+			font-size: 1rem;
+			margin-bottom: 0;
+		}
+
+		.aboutus__text {
+			text-transform: uppercase;
+		}
+	}
+}
+
+.underline {
+	margin: 0 auto 40px;
+	height: 3px;
+	width: 60px;
+	background-color: $redDamask;
+	z-index: 50;
+}
+
+/* main-hero */
+
+.aboutus-hero {
+	position: relative;
+	background-image: url(../img/football-g3809e0035_1920.jpg);
+	background-position: center;
+	background-size: cover;
+
+	.aboutus-hero-shadow {
+		position: absolute;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		background-color: rgba(0, 0, 0, 0.8);
+	}
+
+	.aboutus-hero-item {
+		z-index: 10;
+	}
+
+	.underline {
+		position: sticky;
+		height: 3px;
+		width: 60px;
+		background-color: $redDamask;
+		z-index: 100;
+	}
+
+	h2 {
+		font-size: 1.5rem;
+		position: relative;
+		text-align: center;
+		text-transform: uppercase;
+		z-index: 50;
+	}
+
+	.aboutus-hero-text {
+		font-size: 1.5rem;
+	}
+
+	i {
+		font-size: 2rem;
+		text-transform: uppercase;
+	}
+
+	.title {
+		padding-top: 1rem;
+		font-size: 1.5rem;
+	}
+}
+
+/* coach */
+
+.coach {
+	position: relative;
+	background-image: url(../img/football-field-2588146_640.jpg);
+	text-align: center;
+	background-position: center;
+	background-size: cover;
+	z-index: 0;
+
+	.coach-shadow {
+		position: absolute;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		z-index: -5;
+	}
+
+	h2 {
+		color: $white;
+		font-size: 1.5rem;
+	}
+
+	.coach-card {
+		background-image: url(../img/football-coach-1476449_640.jpg);
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+		background-position: center;
+		background-size: cover;
+		height: 450px;
+		width: 350px;
+		border: 2px solid $white;
+		border-radius: 8px;
+		box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.9);
+		overflow: hidden;
+
+		h1 {
+			text-transform: uppercase;
+			font-size: 1.5rem;
+		}
+
+		button {
+			position: absolute;
+			top: 15px;
+			left: 35px;
+			background: none;
+			border: none;
+			cursor: pointer;
+
+			i {
+				color: $white;
+				font-size: 1.5rem;
+			}
+		}
+
+		button:hover ~ .text {
+			clip-path: circle(120% at 50% 70%);
+		}
+
+		.text {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			color: $white;
+			background-color: rgba(0, 0, 0, 0.85);
+			clip-path: circle(0% at 50% 90%);
+			transition: clip-path 0.9s;
+
+			h1 {
+				color: $redDamask;
+			}
+		}
+	}
+}
+
+.competition {
+	h2 {
+		color: $black;
+		font-size: 1.5rem;
+
+		text-align: center;
+		text-transform: uppercase;
+		z-index: 50;
+	}
+
+	.card-group {
+		.card-title {
+			color: black;
+		}
+
+		.card-text {
+			color: black;
+		}
+	}
+
+	.carousel-item {
+		position: relative;
+		height: 400px;
+	}
+
+	.carousel-caption {
+		background-color: rgba(0, 0, 0, 0.7);
+		position: absolute;
+		left: 0;
+		right: 0;
+	}
+
+	.carousel-indicators {
+		padding-bottom: 20px;
+	}
+}
+
+.contact {
+	h2 {
+		color: $black;
+		text-align: center;
+		margin-top: 2rem;
+		text-transform: uppercase;
+		font-size: 1.5rem;
+	}
+
+	.contact-formular-box {
+		color: $black;
+		display: flex;
+		flex-direction: column;
+		padding: 1rem;
+	}
+
+	input {
+		padding: 1rem;
+		border-radius: 8px;
+		border: none;
+	}
+
+	label {
+		text-transform: uppercase;
+		padding: 1rem;
+		font-size: 1rem;
+	}
+
+	textarea {
+		border-radius: 8px;
+		border: none;
+		max-width: 100%;
+		min-width: 100%;
+		height: 100%;
+	}
+
+	.contact-formular {
+		position: relative;
+	}
+
+	.contact-formular-btn {
+		padding: 1rem;
+		padding-right: 2rem;
+		padding-left: 2rem;
+		background-color: $redDamask;
+		color: $white;
+		border-radius: 8px;
+		border: none;
+		text-transform: uppercase;
+		font-size: 1rem;
+		font-weight: bold;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.btn-special-animation {
+		position: relative;
+		overflow: hidden;
+
+		&::before {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			content: "";
+			transform: scaleX(0);
+			transform-origin: right;
+			transition: transform 0.3s;
+			background-color: $punch;
+			z-index: -1;
+		}
+
+		&:hover::before {
+			transform: scaleX(1);
+			transform-origin: left;
+		}
+	}
+}
+
+.bottom-nav {
+	a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+		padding: 0.25rem;
+	}
+}
+
+.footer {
+	background-color: $footer-color;
+	padding: 1rem;
+
+	p {
+		text-transform: uppercase;
+		margin: 0;
+		text-align: center;
+		font-size: 0.75rem;
+	}
+}
+
+@media (min-width: 992px) {
+	.navbar {
+		display: block;
+		text-transform: uppercase;
+		z-index: 100;
+		background-color: rgba(0, 0, 0, 0.9);
+
+		a {
+			color: $white;
+			font-size: 1rem;
+		}
+
+		a:hover {
+			color: $redDamask;
+		}
+
+		.minilogo2 {
+			width: 70px;
+			height: 70px;
+		}
+
+		span {
+			color: $redDamask;
+			text-transform: none;
+		}
+
+		.active {
+			color: $redDamask;
+		}
+
+		.fa-facebook {
+			font-size: 2.5rem;
+			top: 50%;
+		}
+	}
+
+	.burger-btn {
+		display: none;
+	}
+
+	.minilogo {
+		display: none;
+	}
+
+	.fa-chevron-down {
+		bottom: 40px;
+		font-size: 2rem;
+	}
+}
+
+@import "./medium";
+@import "./small";

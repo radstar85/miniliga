@@ -1,0 +1,33 @@
+@media (min-width: 768px) {
+	.contact-formular {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+	}
+
+	.contact-formular-box {
+		&:nth-child(1) {
+			grid-column: 1/4;
+			grid-row: 1/2;
+		}
+		&:nth-child(2) {
+			grid-column: 4/7;
+			grid-row: 1/2;
+		}
+		&:nth-child(3) {
+			grid-column: 1/-1;
+			grid-row: 2/3;
+		}
+	}
+
+	.contact-formular-btn {
+		grid-column: 3/5;
+	}
+
+	.bottom-nav {
+		grid-column: 2/6;
+	}
+
+
+
+
+}
